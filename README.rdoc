@@ -1,2 +1,4 @@
+{<img src="https://travis-ci.org/tmekkelisti/met.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/tmekkelisti/met]
+
 Mitä eilen tapahtu?
 https://met.herokuapp.com/
