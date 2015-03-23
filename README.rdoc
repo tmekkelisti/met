@@ -1,4 +1,5 @@
 {<img src="https://travis-ci.org/tmekkelisti/met.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/tmekkelisti/met]
 
+{<img src="https://codeclimate.com/github/tmekkelisti/met/badges/coverage.svg" />}[https://codeclimate.com/github/tmekkelisti/met]
 Mitä eilen tapahtu?
 https://met.herokuapp.com/
