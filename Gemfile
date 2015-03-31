@@ -66,3 +66,4 @@ group :development do
 end
 
 gem 'sprockets-rails'
+gem 'coveralls', require: false
