@@ -1,0 +1,8 @@
+<div ng-app="met" ng-controller="StoriesController">
+  <div class="story" ng-repeat="story in stories">
+    <h2>{{story.title}}</h2>
+    <p>{{story.story}}</p>
+    <p>Love, </p>
+    <p>{{story.user.username}}</p>
+  </div>
+</div>
