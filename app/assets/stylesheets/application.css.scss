@@ -39,3 +39,14 @@ textarea#comment {
   margin-left: auto;
   margin-right: auto;
 }
+
+.main-container {
+  #width: 100%;
+  max-width: 70%;
+  min-width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgba(10, 23, 33, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
