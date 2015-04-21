@@ -1,3 +1,4 @@
+<!--
 <div ng-app="met" ng-controller="StoriesController">
   <div class="story" ng-repeat="story in stories">
     <h2>{{story.title}}</h2>
@@ -5,4 +6,21 @@
     <p>Love, </p>
     <p>{{story.user.username}}</p>
   </div>
-</div>
+</div>-->
+
+
+<% @stories.each do |story| %>
+    <div class="story">
+
+      <%= button_to story, method: :get, :class => 'button-comment' do %>
+          <span class="glyphicon glyphicon-comment"></span>
+          <%= story.comments.length %>
+      <% end %>
+      <div id="story-container">
+        <h2><%= story.title %></h2>
+        <p><%= story.story %></p>
+        <p>Love, </p>
+        <p><%= story.user.username %></p>
+      </div>
+    </div>
+<% end %>

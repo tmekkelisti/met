@@ -1,19 +1,46 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @story.title %>
-</p>
+<div class="story">
 
-<p>
-  <strong>Story:</strong>
-  <%= @story.story %>
-</p>
+  <div id="story-container">
+    <h2><%= @story.title %></h2>
+    <p><%= @story.story %></p>
+    <p>Love, </p>
+    <p><%= @story.user.username %></p>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @story.user.username %>
-</p>
+<% if current_user %>
+    <%= form_for(@comment) do |f| %>
+        <% if @comment.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+              <ul>
+                <% @comment.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="comment-container">
+          <%= f.text_area :content, :id => 'comment', :placeholder => 'kirjoita kommenttisi tähän' %>
+          <%= f.hidden_field :story_id, :value => @story.id%>
+
+
+          <%= f.submit 'kommentoi!' %>
+        </div>
+    <% end %>
+<% end %>
+
+<div class="story">
+  <% @comments.each do |comment| %>
+    <div id="comment">
+      <%= comment.content %><br/>
+      - <%= comment.user.username %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

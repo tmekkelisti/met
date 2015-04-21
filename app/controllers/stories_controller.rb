@@ -10,7 +10,8 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-
+    @comments = @story.comments
+    @comment = Comment.new
   end
 
   # GET /stories/new
