@@ -27,7 +27,7 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-    @story.user = current_user
+    @story.user_id = current_user.id
 
     respond_to do |format|
       if @story.save
