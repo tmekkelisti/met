@@ -1,10 +1,67 @@
-<p id="notice"><%= notice %></p>
+<div class="page-container">
+  <h2><strong><%= @user.username %></strong>
+    <p class="pull-right">profiili</p>
+  </h2>
+  <hr>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <% if @user.stories.any? %>
+    <h4>kirjoitetut tarinat (<%= @user.stories.length %>)
+    </h4>
+    <ul>
+      <% @user.stories.each do |story| %>
+        <li>
+          <%= link_to story.title, story_path(story) %>
+          <% if @user == current_user %>
+
+            <div class="pull-right">
+              <%= link_to edit_story_path(story) do %>
+                  <i class="glyphicon glyphicon-pencil"></i>
+              <% end %>
+              <%= link_to story, data: {confirm: 'poistetaanko tarina?'}, method: :delete do %>
+                  <i class="glyphicon glyphicon-trash"></i>
+              <% end %>
+            </div>
+
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+      <hr>
+  <% end %>
+
+  <% if @user.comments.any? %>
+      <h4>kirjoitetut kommentit (<%= @user.comments.length %>)
+      </h4>
+      <ul>
+        <% @user.comments.each do |comment| %>
+            <li>
+              <%= link_to (h truncate(comment.content, :length => 60)), story_path(comment.story) %>
+
+              <% if @user == current_user %>
+
+                  <div class="pull-right">
+                    <%= link_to edit_comment_path(comment) do %>
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    <% end %>
+                    <%= link_to comment, data: {confirm: 'poistetaanko kommentti?'}, method: :delete do %>
+                        <i class="glyphicon glyphicon-trash"></i>
+                    <% end %>
+                  </div>
+
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+      <hr>
+  <% end %>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+</div>
+
+<% if @user == current_user %>
+    <%= link_to 'muokkaa käyttäjää', edit_user_path(@user) %> |
+    <%= link_to 'poista käyttäjä', @user, method: :delete, data: {confirm: 'poistetaanko käyttäjä?'} %> |
+<% end %>
+
+<%= link_to 'takaisin', users_path %>

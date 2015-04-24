@@ -1,13 +1,19 @@
 
 <div class="story">
+  <% if @story.user == current_user %>
+      <%= button_to edit_story_path(@story), method: :get, :class => 'button-comment pull-right' do %>
+        <span class="glyphicon glyphicon-pencil"></span>
+      <% end %>
+  <% end %>
 
   <div id="story-container">
+    <span class="pull-right"><%= @story.created_at.strftime('%d/%m/%Y %H:%M') %></span>
     <h2><%= @story.title %></h2>
     <p><%= @story.story %></p>
     <p>Love, </p>
-    <p><%= @story.user.username %></p>
-  </div>
-</div>
+    <%= link_to @story.user.username, user_path(@story.user)%>
+    <hr>
+    </div>
 
 <% if current_user %>
     <%= form_for(@comment) do |f| %>
@@ -33,14 +39,25 @@
     <% end %>
 <% end %>
 
+<h4>kommentit
+  <% if not current_user %>
+    <%= link_to 'kirjaudu sisään ja kommentoi', signin_path %>
+  <% end %>
+</h4>
+
+
 <div class="story">
   <% @comments.each do |comment| %>
     <div id="comment">
       <%= comment.content %><br/>
       - <%= comment.user.username %>
     </div>
+    <hr>
   <% end %>
 </div>
+</div>
+<% if @story.user == current_user %>
+    <%= link_to 'muokkaa tarinaa', edit_story_path(@story) %> |
+<% end %>
+<%= link_to 'takaisin', stories_path %>
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>

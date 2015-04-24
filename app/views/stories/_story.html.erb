@@ -17,6 +17,7 @@
           <%= story.comments.length %>
       <% end %>
       <div class="story-container">
+        <span class="pull-right"><%= story.created_at.strftime('%d/%m/%Y %H:%M') %></span>
         <h2><%= story.title %></h2>
         <p><%= story.story %></p>
         <p>Love, </p>
