@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, except: [:index]
 
-  resources :comments
+  resources :comments, except: [:index]
 
   resources :stories
 

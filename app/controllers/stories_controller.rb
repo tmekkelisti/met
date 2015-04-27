@@ -59,7 +59,10 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
-    @story.destroy
+    if current_user == @story.user
+      @story.destroy
+    end
+
     respond_to do |format|
       format.html { redirect_to :back, notice: 'tarina on nyt poistettu' }
       format.json { head :no_content }

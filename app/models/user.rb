@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 4 }
 
-  #validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/, message: "has to contain one number and one uppercase letter"}
+  validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/, message: "has to contain one number and one uppercase letter"}
 
 end

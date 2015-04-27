@@ -24,7 +24,7 @@
       <div class="story-container">
         <span class="pull-right"><%= story.created_at.strftime('%d/%m/%Y %H:%M') %></span>
         <h2><%= story.title %></h2>
-        <p><%= simple_format(strip_tags(story.story) ) %></p>
+        <%= simple_format(strip_tags(story.story) ) %>
         <p>Love, </p>
         <p><%= story.user.username %></p>
 

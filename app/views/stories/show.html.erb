@@ -19,10 +19,9 @@
     <h2><%= @story.title %></h2>
     <p><%= simple_format(@story.story ) %></p>
     <p>Love, </p>
-    <%= link_to @story.user.username, user_path(@story.user)%>
-    <hr>
+    <%= link_to @story.user.username, user_path(@story.user) %>
     </div>
-
+</div>
 <% if current_user %>
     <%= form_for(@comment) do |f| %>
         <% if @comment.errors.any? %>
@@ -46,7 +45,7 @@
         </div>
     <% end %>
 <% end %>
-
+<br />
 <h4>kommentit
   <% if not current_user %>
     <%= link_to 'kirjaudu sisään ja kommentoi', signin_path %>
@@ -54,7 +53,8 @@
 </h4>
 
 
-<div class="story">
+<div class="story-comment-container">
+  <%= 'ei kommentteja' if @comments.empty? %>
   <% @comments.each do |comment| %>
 
       <%= simple_format(h(comment.content)) %>
@@ -64,9 +64,10 @@
       <br /><hr>
   <% end %>
 </div>
-</div>
 <% if @story.user == current_user %>
     <%= link_to 'muokkaa tarinaa', edit_story_path(@story) %> |
 <% end %>
 <%= link_to 'takaisin', stories_path %>
+</div>
+
 

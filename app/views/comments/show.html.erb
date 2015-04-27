@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>sisältö:</strong>
   <%= @comment.content %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @comment.user_id %>
+  <strong>käyttäjä:</strong>
+  <%= @comment.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'muokkaa', edit_comment_path(@comment) %> |
+<%= link_to 'takaisin', :back %>

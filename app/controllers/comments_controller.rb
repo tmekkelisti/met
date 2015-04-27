@@ -28,8 +28,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
 
-
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Kommentti lisätty' }
@@ -58,7 +56,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment.destroy
+    if current_user == @comment.user
+      @comment.destroy
+    end
+
     respond_to do |format|
       format.html { redirect_to :back, notice: 'kommentti on poistettu' }
       format.json { head :no_content }

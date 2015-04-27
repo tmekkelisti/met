@@ -5,7 +5,9 @@ class LikeController < ApplicationController
     @like.story_id = params[:story_id]
     @like.value = params[:value]
 
-    like = Like.where({story_id: params[:story_id], user_id: current_user.id})
+    if current_user
+      like = Like.where({story_id: params[:story_id], user_id: current_user.id})
+    end
 
     if current_user.nil?
       redirect_to signin_path, notice: 'kirjauduhan sisään'
