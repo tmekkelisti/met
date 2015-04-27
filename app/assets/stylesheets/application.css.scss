@@ -67,7 +67,7 @@ textarea#comment {
   margin-left: auto;
   background-color: rgba(10, 23, 33, 0.1);
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 0px;
   min-height: 100% !important;
 }
 
@@ -86,3 +86,24 @@ textarea#comment {
   margin-right: auto;
 }
 
+form#new_story.new_story {
+  text-align: center;
+}
+
+textarea#story_story {
+  width: 80%;
+  height: 250px;
+  rows: 10;
+}
+
+input#story_title {
+  width: 80%;
+}
+
+form#new_user.new_user {
+  text-align: center;
+}
+
+.comment{
+  margin-bottom: 4px;
+}

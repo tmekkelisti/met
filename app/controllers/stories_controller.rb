@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = Story.all.sort_by(&:created_at).reverse!
   end
 
   # GET /stories/1
@@ -29,6 +29,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.user_id = current_user.id
+    #strip_tags(@story.story)
 
     respond_to do |format|
       if @story.save

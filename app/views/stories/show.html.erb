@@ -17,7 +17,7 @@
   <div id="story-container">
     <span class="pull-right"><%= @story.created_at.strftime('%d/%m/%Y %H:%M') %></span>
     <h2><%= @story.title %></h2>
-    <p><%= @story.story %></p>
+    <p><%= simple_format(@story.story ) %></p>
     <p>Love, </p>
     <%= link_to @story.user.username, user_path(@story.user)%>
     <hr>
@@ -56,11 +56,12 @@
 
 <div class="story">
   <% @comments.each do |comment| %>
-    <div id="comment">
-      <%= comment.content %><br/>
-      - <%= comment.user.username %>
-    </div>
-    <hr>
+
+      <%= simple_format(h(comment.content)) %>
+      <p class="pull-left"><strong><%=link_to comment.user.username, user_path(comment.user) %></strong></p>
+
+      <p class="pull-right"><%= comment.created_at.strftime('%d/%m/%Y %H:%M') %></p>
+      <br /><hr>
   <% end %>
 </div>
 </div>
