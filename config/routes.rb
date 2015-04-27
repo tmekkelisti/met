@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
 
+  post 'like', to: 'like#vote'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

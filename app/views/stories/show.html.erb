@@ -1,10 +1,18 @@
 
 <div class="story">
-  <% if @story.user == current_user %>
-      <%= button_to edit_story_path(@story), method: :get, :class => 'button-comment pull-right' do %>
-        <span class="glyphicon glyphicon-pencil"></span>
-      <% end %>
-  <% end %>
+
+    <%= button_to like_path(:story_id => @story.id, :value => 1), method: :post, :class => 'button-comment pull-right' do %>
+        <span class="glyphicon glyphicon-thumbs-up"></span>
+        <%= @story.likes.length %>
+    <% end %>
+
+    <% if @story.user == current_user %>
+        <%= button_to edit_story_path(@story), method: :get, :class => 'button-comment pull-left' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+    <% end %>
+
+
 
   <div id="story-container">
     <span class="pull-right"><%= @story.created_at.strftime('%d/%m/%Y %H:%M') %></span>

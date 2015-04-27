@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :stories
   has_many :comments
+  has_many :likes, dependent: :destroy
 
   validates :username, uniqueness: true,
       length: { in: 3..15 }

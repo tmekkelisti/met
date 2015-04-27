@@ -6,7 +6,7 @@
   display: block;
   background-color: #999999;
   padding: 1em;
-  margin: 1em;
+  margin: 1em 1em 2em 1em;
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
@@ -14,4 +14,9 @@
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+
+}
+
+.story h2 {
+  padding-top: 0px;
 }

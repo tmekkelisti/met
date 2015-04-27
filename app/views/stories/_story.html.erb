@@ -12,6 +12,11 @@
 <% @stories.each do |story| %>
     <div class="story">
 
+      <%= button_to like_path(:story_id => story.id, :value => 1), method: :post, :class => 'button-comment pull-right' do %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+          <%= story.likes.length %>
+      <% end %>
+
       <%= button_to story, method: :get, :class => 'button-comment' do %>
           <span class="glyphicon glyphicon-comment"></span>
           <%= story.comments.length %>
@@ -22,6 +27,15 @@
         <p><%= story.story %></p>
         <p>Love, </p>
         <p><%= story.user.username %></p>
+
+
+        <%# link_to like_path(:story_id => story.id, :value => 1), method: :post do %>
+            <!--<span class="glyphicon glyphicon-thumbs-up"></span>-->
+            <%# story.likes.length %>
+        <%# end %>
+
+
+
       </div>
     </div>
 <% end %>

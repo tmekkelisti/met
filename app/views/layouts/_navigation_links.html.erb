@@ -1,7 +1,9 @@
 <%# add navigation links to this file %>
 <li><%= link_to 'tarinat', stories_path %></li>
+<li><%= link_to 'kirjoita tarina', new_story_path %></li>
 <li><%= link_to 'käyttäjät', users_path %></li>
-<li><%= link_to 'kommentit', comments_path %></li>
+
+
 
 <% if not current_user.nil? %>
     <li class="dropdown">
